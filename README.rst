@@ -23,10 +23,10 @@ Requirements
 Configuration
 -------------
 
-Configuration file is back... for me it seems useful specially for users speaking other languages and to avoid same notation in this skill and in Domoticz server. Plus, the server can be remote.
-Put your configuration in the file “conf.cfg”.
+Devices configuration file is back... for me it seems useful specially for users speaking other languages and to avoid same notation in this skill and in Domoticz server.
+Put your configuration in the file “what-where.cfg”.
 
-Located in : domoticz_skill/conf.cfg
+Located in : domoticz_skill/what-where.cfg
 The principle is to put the 'what' followed by the 'where' separated by a hyphen :
 
 'what-where' = idx
@@ -41,9 +41,10 @@ examples :
 
 Mycroft Settings Page
 -----
-
+Configuration for server IP and login details can be now set in Mycroft account, under Domoticz skill - when installed it will be listed there.
 The default settings for the domoticz connection and configuration is the local host without
-authentication.  [I have yet to grasp how to use it... for now is not functional]
+authentication.
+The settings can be also manually changed in file "settings.json" located in domoticz_skill/settings.json
 
 Usage
 -----
