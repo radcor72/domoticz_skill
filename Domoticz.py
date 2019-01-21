@@ -14,7 +14,7 @@ class Domoticz:
     """Class for controlling Domoticz."""
     def __init__(self, host, port, protocol, authentication, login, password):
         """Recover settings for accessing to Domoticz instance."""
-        devices_name = "what_where.cfg"
+        devices_name = "what-where.cfg"
         settings_name = 'settings.json'
         devices_file = os.path.join(os.path.dirname(__file__), devices_name)
         settings_file = os.path.join(os.path.dirname(__file__), settings_name)
