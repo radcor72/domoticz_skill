@@ -71,7 +71,7 @@ example phrases:
 Todo
 ----
 
-Sync server properties to Mycroft settings.
+To submit the skill for approval and testing to Mycroft.
 
 .. _Python3: https://www.python.org/downloads/
 .. _Mycroft: https://mycroft.ai/
