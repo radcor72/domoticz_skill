@@ -94,18 +94,20 @@ class DomoticzSkill(MycroftSkill):
             'what': what,
             'where': where
         }
-        response = domoticz.get(what, where)
-        data = str(response['Data'])
-        if data is None:
+        LOGGER.debug("message: " + str(message.data))
+        response = str(domoticz.get(what, where))
+        LOGGER.debug('Request result is: ' + response)
+        if response == 'None': #this is a string, not an empty object
             if where is None:
                 self.speak_dialog("NotFoundShort", data)
             else:
                 self.speak_dialog("NotFound", data)
-        if re.search('\d\s+C', data):
-            data = data.replace(' C', ' degrees celsius')
-        if re.search('\d\s+F', data):
-            data = data.replace(' F', ' degrees fahrenheit')
-        data = "It's " + data
+        else:
+            if re.search('\d\s+C', data):
+                data = data.replace(' C', ' degrees celsius')
+            if re.search('\d\s+F', data):
+                data = data.replace(' F', ' degrees fahrenheit')
+            data = "It's " + data
         LOGGER.debug("result : " + str(data))
         self.speak(str(data))
 
