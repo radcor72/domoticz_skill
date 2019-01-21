@@ -34,10 +34,10 @@ idx is the device number in Domoticz.
 
 examples :
 
-temperature-living room = 1 
-flood sensor-bathroom = 2
-all lights-house = 3
-Light-Living room = 4
+- temperature-living room = 1 
+- flood sensor-bathroom = 2
+- all lights-house = 3
+- Light-Living room = 4
 
 Mycroft Settings Page
 -----
