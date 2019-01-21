@@ -23,35 +23,27 @@ Requirements
 Configuration
 -------------
 
-Name your devices in Domoticz like this: "Where What".  Mycroft will look for the device listed
-in Domoticz. However the skill will also look for "What Where" as well.  Devices can also be
-referenced by "What" alone but Mycroft will only fall back to that if it can't find the device
-using "Where What" or "What Where".
+Configuration file is back... for me it seems useful specially for users speaking other languages and to avoid same notation in this skill and in Domoticz server. Plus, the server can be remote.
+Put your configuration in the file “conf.cfg”.
 
-Note:  Especially with weather sensors try to name your devices something that won't interfere
-with other skills.  For instance naming a device "weather" could cause Mycroft to give you the
-current stat for the device named "weather" if you ask "what's the weather" rather than telling
-you what the current weather is via the weather skill.
+Located in : domoticz_skill/conf.cfg
+The principle is to put the 'what' followed by the 'where' separated by a hyphen :
 
+'what-where' = idx
+idx is the device number in Domoticz.
 
-Domoticz Groups and Scenes
------
+examples :
 
-If you want Mycroft to do things like "turn off all the lights" in Domoticz then make a
-scene or group named "all the lights" with all the lights in it and the skill will find this
-group and operate the whole group rather than an individual object.  One caveat is that you
-want to make the scene name distinct from the individual switch name.  Mycroft is not good
-at picking out the "S" sound at the end of the word.  So a group with items in it called
-Kitchen Light, Counter Light and Stove Light, won't work properly if you call the groups
-name "Kitchen Lights".  Mycroft will trigger on "Kitchen Light" before it triggers on
-"Kitchen Lights".  So if you say "Hey Mycroft turn off the kicthen lights" it will most
-likely only turn off the light named "Kitchen Light".
+temperature-living room = 1
+flood sensor-bathroom = 2
+all lights-house = 3
+Light-Living room = 4
 
 Mycroft Settings Page
 -----
 
 The default settings for the domoticz connection and configuration is the local host without
-authentication.  
+authentication.  [I have yet to grasp how to use it... for now is not functional]
 
 Usage
 -----
@@ -71,16 +63,11 @@ example phrases:
 -  Hey Mycroft lock the front door
 -  Hey Mycroft dim the dining room dimmer 50%
 
-In French (not yet tested) :
-
--  allume la lumière du salon
--  éteind la lumiere du salon
-
 
 Todo
 ----
 
-Use with Tasker on Android for send command voice to Mycroft.
+Sync server properties to Mycroft settings.
 
 .. _Python3: https://www.python.org/downloads/
 .. _Mycroft: https://mycroft.ai/
