@@ -14,18 +14,25 @@ class Domoticz:
     """Class for controlling Domoticz."""
     def __init__(self, host, port, protocol, authentication, login, password):
         """Recover settings for accessing to Domoticz instance."""
-        config_name = "conf.cfg"
-        config_file = os.path.join(os.path.dirname(__file__), config_name)
+        devices_name = "what_where.cfg"
+        settings_name = 'settings.json'
+        devices_file = os.path.join(os.path.dirname(__file__), devices_name)
+        settings_file = os.path.join(os.path.dirname(__file__), settings_name)
+        conf = json.loads(open(settings_file).read())
         self.config = configparser.ConfigParser(allow_no_value=True)
         self.config.sections()
-        self.config.read(config_file)
-        self.host = self.config["domoticz"]["host"]
-        self.port = self.config["domoticz"]["port"]
-        self.protocol = self.config["domoticz"]["protocol"]
-        authentication = self.config["domoticz"].getboolean('authentication')
+        self.config.read(devices_file)
+        self.host = conf['hostname']
+        if conf['protocol']:
+            self.protocol = 'https'
+            self.port = conf['httpsport']
+        else:
+            self.protocol='http'
+            self.port = conf['port']
+        authentication = conf['authorization']
         if authentication:
-            self.login = self.config["domoticz"]["login"]
-            self.password = self.config["domoticz"]["password"]
+            self.login =  conf['username']
+            self.password = conf['password']
             self.url = self.protocol + "://" + self.login + ":" + self.password + "@" + self.host + ":" + self.port
         else:
             self.url = self.protocol + "://" + self.host + ":" + self.port
