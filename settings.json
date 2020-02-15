@@ -1,1 +1,1 @@
-{"protocol": false, "username": "", "httpsport": 443, "label1": "null", "hostname": "192.168.10.100", "port": "8080", "password": "", "__mycroft_skill_firstrun": false, "httpport": "8080", "Devices": "", "authorization": false, "label2": "null"}
+{"protocol": false, "username": "", "httpsport": "443", "label1": "null", "hostname": "192.168.10.100", "port": "8080", "password": "", "__mycroft_skill_firstrun": false, "httpport": "8080", "Devices": "", "authorization": false, "label2": "null"}
