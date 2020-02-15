@@ -79,6 +79,8 @@ class DomoticzSkill(MycroftSkill):
             self.speak("The " + str(what) + " is already " + str(state).title() + ending)
         elif response is 1:
             self.speak("The " + str(what) + " can not be operated with " + str(state).title())
+        else:
+            self.speak("As you wish")
 
     def handle_domoticz_infos_intent(self, message):
         what = message.data.get("WhatKeyword")
