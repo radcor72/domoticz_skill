@@ -14,7 +14,7 @@ class Domoticz:
     """Class for controlling Domoticz."""
     def __init__(self, host, port, protocol, authentication, login, password):
         """Recover settings for accessing to Domoticz instance."""
-        devices_name = "what-where.cfg"
+        devices_name = "what_where.cfg"
         settings_name = 'settings.json'
         devices_file = os.path.join(os.path.dirname(__file__), devices_name)
         settings_file = os.path.join(os.path.dirname(__file__), settings_name)
@@ -52,6 +52,7 @@ class Domoticz:
         payload = json.loads(response.decode('utf-8'))
         stype = False
         dlevel = False
+        result = None
         while i < len(payload['result']):
             if idx==payload['result'][i]['idx']:
                 stype = payload['result'][i]['Type']
@@ -72,9 +73,8 @@ class Domoticz:
                 break
             else:
                 result = None
-                break
             i += 1
-        LOGGER.debug('findid results are: idx=' + str(idx) + ', result=' + str(result) + ', stype=' + str(stype) + ', dlevel=$
+        LOGGER.debug('findid results are: idx=' + str(idx) + ', result=' + str(result) + ', stype=' + str(stype) + '$
         return [idx, result, stype, dlevel]
 
     def findcmd(self, state, action, dlevel):
@@ -129,9 +129,9 @@ class Domoticz:
             cmd = self.findcmd(state, action, dlevel)
             if cmd:
                 try:
-                    f = urllib.request.urlopen(self.url + "/json.htm?type=command&param=switch" + stype + "&idx=" + str(idx) + "&switchcmd=" + str(cmd))
+                    f = urllib.request.urlopen(self.url + "/json.htm?type=command&param=switch" + stype + "&idx=" + $
                     response = f.read()
-                    LOGGER.debug('url  to open is: ' + self.url + "/json.htm?type=command&param=switch" + stype + "&idx=" + str(idx) + "&switchcmd=" + str(cmd))
+                    LOGGER.debug('url  to open is: ' + self.url + "/json.htm?type=command&param=switch" + stype + "&$
                     LOGGER.debug('response is: ' + str(response))
                     return response
                 except IOError as e:
@@ -163,7 +163,7 @@ class Domoticz:
                     i += 1
             elif where is None:
                 while i < len(payload['result']):
-                    if wht.search(payload['result'][i]['idx']):
+                    if idx==payload['result'][i]['idx']:
                         break
                     elif i is len(payload['result']) - 1:
                         payload['result'][i]['Data'] = None
