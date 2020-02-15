@@ -74,7 +74,7 @@ class Domoticz:
             else:
                 result = None
             i += 1
-        LOGGER.debug('findid results are: idx=' + str(idx) + ', result=' + str(result) + ', stype=' + str(stype) + '$
+        LOGGER.debug('findid results are: idx=' + str(idx) + ', result=' + str(result) + ', stype=' + str(stype) + ', dlevel=' + str(dlevel))
         return [idx, result, stype, dlevel]
 
     def findcmd(self, state, action, dlevel):
@@ -129,9 +129,9 @@ class Domoticz:
             cmd = self.findcmd(state, action, dlevel)
             if cmd:
                 try:
-                    f = urllib.request.urlopen(self.url + "/json.htm?type=command&param=switch" + stype + "&idx=" + $
+                    f = urllib.request.urlopen(self.url + "/json.htm?type=command&param=switch" + stype + "&idx=" + str(idx) + "&switchcmd=" + str(cmd))
                     response = f.read()
-                    LOGGER.debug('url  to open is: ' + self.url + "/json.htm?type=command&param=switch" + stype + "&$
+                    LOGGER.debug('url  to open is: ' + self.url + "/json.htm?type=command&param=switch" + stype + "&idx=" + str(idx) + "&switchcmd=" + str(cmd))
                     LOGGER.debug('response is: ' + str(response))
                     return response
                 except IOError as e:
