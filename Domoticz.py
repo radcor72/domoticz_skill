@@ -35,7 +35,7 @@ class Domoticz:
             self.password = conf['password']
             self.url = self.protocol + "://" + self.login + ":" + self.password + "@" + self.host + ":" + self.port
         else:
-            self.url = self.protocol + "://" + self.host + ":" + self.port
+            self.url = self.protocol + "://" + self.host + ":" + str(self.port)
 
     def findid(self, what, where, state = None):
         i = 0
